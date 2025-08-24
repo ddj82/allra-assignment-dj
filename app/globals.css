@@ -9,3 +9,12 @@ img {
     inset: 0;
     color: transparent;
 }
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    min-height: 100vh;
+}

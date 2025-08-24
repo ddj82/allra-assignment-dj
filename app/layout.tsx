@@ -24,10 +24,10 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
     return (
         <html lang="ko">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            <div className="container w-[80%] mx-auto">
+            <div className="mx-auto md:container md:min-h-[calc(100dvh-358px-64px)]">
                 <Providers>
                     <Header/>
-                    <main>{children}</main>
+                    <main className="pb-13 pt-[24px] md:py-[40px] lg:py-[80px]">{children}</main>
                     <Footer/>
                 </Providers>
             </div>
