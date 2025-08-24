@@ -1,4 +1,5 @@
 import {useRef} from "react";
+import {Search} from "lucide-react";
 
 interface BlogHeaderProps {
     onSearch: (query: string) => void;
@@ -25,12 +26,12 @@ export default function BlogHeader({ onSearch }: BlogHeaderProps) {
             </h2>
             <div className="relative">
                 {/* 검색 버튼 */}
-                <button
-                    onClick={handleSearch}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-label-500 hover:text-label-700"
-                >
-                    🔍
-                </button>
+                <Search size={16} className="lucide lucide-search absolute top-1/2 left-7 -translate-y-1/2 text-label-700 cursor-pointer"/>
+                {/*<button*/}
+                {/*    onClick={handleSearch}*/}
+                {/*    className="lucide lucide-search absolute top-1/2 left-7 -translate-y-1/2 text-label-700 cursor-pointer"*/}
+                {/*>*/}
+                {/*</button>*/}
                 <input
                     ref={inputRef}
                     className="ring-offset-background file:text-sm flex rounded-md border bg-background-default px-6 py-[12.5px] file:border-0 file:bg-transparent file:font-medium placeholder:text-body-2 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:border-0 disabled:bg-background-alternative disabled:text-status-disable disabled:placeholder:text-status-disable focus:ring-1 focus:ring-component-dark h-[48px] border-line-200 pl-11 text-body-1 placeholder:font-normal placeholder:text-label-500 w-full md:w-[400px] lg:w-[468px]"
