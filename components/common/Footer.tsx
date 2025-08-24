@@ -1,7 +1,7 @@
 export default function Footer() {
     return (
-        <div>
+        <footer>
             푸터
-        </div>
+        </footer>
     );
 };
