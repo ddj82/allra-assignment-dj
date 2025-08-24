@@ -1,11 +1,15 @@
-import {useRef, useState} from "react";
+import {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import {Search, X} from "lucide-react";
 
 interface BlogHeaderProps {
     onSearch: (query: string) => void;
 }
 
-export default function BlogHeader({ onSearch }: BlogHeaderProps) {
+export interface BlogHeaderRef {
+    clearInput: () => void;
+}
+
+const BlogHeader = forwardRef<BlogHeaderRef, BlogHeaderProps>(({ onSearch }, ref) => {
     const inputRef = useRef<HTMLInputElement>(null);
     const [hasValue, setHasValue] = useState(false);
 
@@ -21,6 +25,18 @@ export default function BlogHeader({ onSearch }: BlogHeaderProps) {
             inputRef.current.focus();
         }
     };
+
+    const clearInput = () => {
+        if (inputRef.current) {
+            inputRef.current.value = '';
+            setHasValue(false);
+        }
+    };
+
+    // 부모 컴포넌트에서 clearInput 함수를 호출할 수 있도록 노출
+    useImperativeHandle(ref, () => ({
+        clearInput
+    }));
 
     const handleInputChange = () => {
         const value = inputRef.current?.value || '';
@@ -64,4 +80,8 @@ export default function BlogHeader({ onSearch }: BlogHeaderProps) {
             </div>
         </header>
     );
-};
+});
+
+BlogHeader.displayName = 'BlogHeader';
+
+export default BlogHeader;
