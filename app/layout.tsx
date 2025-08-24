@@ -24,11 +24,13 @@ export default function RootLayout({children,}: Readonly<{ children: React.React
     return (
         <html lang="ko">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            <Providers>
-                <Header/>
-                <main>{children}</main>
-                <Footer/>
-            </Providers>
+            <div className="container w-[80%] mx-auto">
+                <Providers>
+                    <Header/>
+                    <main>{children}</main>
+                    <Footer/>
+                </Providers>
+            </div>
             </body>
         </html>
     );
