@@ -6,6 +6,12 @@ import { useState } from "react";
 import { blog } from "@/types/Items";
 import dayjs from 'dayjs';
 import Link from "next/link";
+import {
+    ChevronRight,
+    ChevronLeft,
+    ChevronsRight,
+    ChevronsLeft,
+} from "lucide-react";
 
 interface BlogsProps {
     searchQuery: string;
@@ -102,14 +108,14 @@ export default function BlogList({ searchQuery }: BlogsProps) {
 
             {/* 페이지네이션 */}
             <div className="flex w-full flex-wrap items-center justify-center gap-6 text-body-2 mt-9 md:mt-10 lg:mt-11">
-                {/* 오른쪽 버튼 */}
+                {/* 왼쪽 버튼 */}
                 <div className="flex items-center gap-4">
                     <button
                         onClick={goToFirstGroup}
                         className="paginationBtn"
                         disabled={currentGroupStart <= pageGroupSize}
                     >
-                        &lt;&lt;
+                        <ChevronsLeft size={24} />
                     </button>
 
                     <button
@@ -117,7 +123,7 @@ export default function BlogList({ searchQuery }: BlogsProps) {
                         className="paginationBtn"
                         disabled={currentPage === 1}
                     >
-                        &lt;
+                        <ChevronLeft size={24} />
                     </button>
                 </div>
 
@@ -134,14 +140,14 @@ export default function BlogList({ searchQuery }: BlogsProps) {
                     ))}
                 </div>
 
-                {/* 왼쪽 버튼 */}
+                {/* 오른쪽 버튼 */}
                 <div className="flex items-center gap-4">
                     <button
                         onClick={goToNextPage}
                         className="paginationBtn"
                         disabled={currentPage === totalPages}
                     >
-                        &gt;
+                        <ChevronRight size={24} />
                     </button>
 
                     <button
@@ -149,7 +155,7 @@ export default function BlogList({ searchQuery }: BlogsProps) {
                         className="paginationBtn"
                         disabled={currentGroupStart + pageGroupSize > totalPages}
                     >
-                        &gt;&gt;
+                        <ChevronsRight size={24} />
                     </button>
                 </div>
             </div>
