@@ -18,3 +18,7 @@ body {
     height: 100%;
     min-height: 100vh;
 }
+
+.paginationBtn {
+    @apply inline-flex items-center justify-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed disabled:text-status-disable h-[40px] gap-3 rounded-md text-body-2 font-semibold px-0;
+}
