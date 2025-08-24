@@ -13,10 +13,10 @@ export default function BlogCategory({ selectedCategory, onCategoryChange }: Blo
                     <div key={category.value} className="relative">
                         <button
                             onClick={() => onCategoryChange(category.value)}
-                            className={`text-body-1 whitespace-nowrap py-[15px] px-5 relative text-label-900 font-semibold ${
+                            className={`text-body-1 whitespace-nowrap py-[15px] px-5 relative ${
                                 selectedCategory === category.value
                                     ? 'text-label-900 font-semibold'
-                                    : 'text-label-500 font-normal hover:text-label-700'
+                                    : 'text-label-500 font-normal'
                             }`}
                         >
                             {category.label}

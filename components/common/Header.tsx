@@ -1,12 +1,16 @@
+import Link from "next/link";
+
 export default function Header() {
     return (
         <header className="flex justify-between">
-            <div className="fixed top-0 left-0 z-40 h-header w-full bg-background-default">
+            <div className="fixed top-0 left-0 z-40 h-[60px] w-full bg-background-default">
                 <div className="size-full">
                     <div className="container flex h-full items-center justify-between *:h-full">
                         {/* 로고 */}
                         <div className="flex items-center gap-11">
-                            로고
+                            <Link href="/" className="flex items-center justify-center w-24 h-16">
+                                로고
+                            </Link>
                         </div>
                         {/* 회원가입/로그인 pc */}
                         <div className="flex items-center gap-4 max-lg:hidden">
@@ -18,8 +22,10 @@ export default function Header() {
                             </button>
                         </div>
                     </div>
+                    <div className="shrink-0 h-px w-full bg-line-200"></div>
                 </div>
             </div>
+            <div className="shrink-0 block h-[60px] bg-background-default"></div>
         </header>
     );
 };
