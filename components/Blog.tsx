@@ -4,8 +4,8 @@ import Banners from "@/app/items/Banners";
 export default function Blog() {
     return (
         <div>
-            <Blogs/>
             <Banners/>
+            <Blogs/>
         </div>
     );
 };
