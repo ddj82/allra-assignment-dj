@@ -6,11 +6,6 @@
     @apply inline-flex items-center justify-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed disabled:text-status-disable h-[40px] gap-3 rounded-md text-body-2 font-semibold px-0;
 }
 
-img {
-    @apply absolute inset-0 h-full w-full;
-    color: transparent;
-}
-
 * {
     @apply border-line-400;
     word-break: keep-all;
