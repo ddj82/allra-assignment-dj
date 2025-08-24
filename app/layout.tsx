@@ -22,15 +22,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="ko">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-            <div className="mx-auto md:container md:min-h-[calc(100dvh-358px-64px)]">
-                <Providers>
-                    <Header/>
-                    <main className="pb-13 pt-[24px] md:py-[40px] lg:py-[80px]">{children}</main>
-                    <Footer/>
-                </Providers>
-            </div>
+        <html lang="ko" className="h-full">
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased h-full min-h-screen`}>
+                <div className="mx-auto md:container md:min-h-[calc(100dvh-358px-64px)]">
+                    <Providers>
+                        <Header/>
+                        <main className="pb-13 pt-[24px] md:py-[40px] lg:py-[80px]">{children}</main>
+                        <Footer/>
+                    </Providers>
+                </div>
             </body>
         </html>
     );

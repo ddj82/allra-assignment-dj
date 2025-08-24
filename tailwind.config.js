@@ -9,7 +9,7 @@ module.exports = {
             colors: {
                 // Primary
                 primary: {
-                    500: '#1E90FF', // Blue500
+                    DEFAULT: '#1E90FF',
                 },
 
                 // Secondary - Blue 계열
@@ -73,6 +73,15 @@ module.exports = {
                 'elevation-normal': '0 2px 4px rgba(0, 0, 0, 0.1)',
                 'elevation-strong': '0 4px 8px rgba(0, 0, 0, 0.15)',
                 'elevation-heavy': '0 8px 16px rgba(0, 0, 0, 0.2)',
+            },
+            borderRadius: {
+                '2xs': '2px',
+                'xs': '4px',
+                'sm': '6px',
+                'md': '8px',
+                'lg': '10px',
+                'xl': '12px',
+                '2xl': '14px',
             },
         },
     },

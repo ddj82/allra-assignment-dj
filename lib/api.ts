@@ -1,11 +1,10 @@
-export async function getPosts(params?: { page?: number; pageSize?: number; category?: string; term?: string; }) {
 export async function getBanners() {
     const res = await fetch('https://allra-front-assignment.vercel.app/api/blogs/banners', { cache: 'no-store' });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
 }
 
-export async function getPosts(params?: { q?: string; page?: number; pageSize?: number; category?: string; term?: string; }) {
+export async function getPosts(params?: { page?: number; pageSize?: number; category?: string; term?: string; }) {
     const base = 'https://allra-front-assignment.vercel.app/api/blogs';
     const url = new URL(base);
 
