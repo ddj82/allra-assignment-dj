@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPosts } from '@/lib/api';
 import {useEffect, useState} from "react";
-import { blog } from "@/types/Items";
+import {blog, getCategoryLabel} from "@/types/Items";
 import dayjs from 'dayjs';
 import Link from "next/link";
 import {
@@ -127,7 +127,7 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
                             <div>
                                 <div>
                                     <p className="text-body-3 font-medium text-secondary-400">
-                                        {blog.category}
+                                        {getCategoryLabel(blog.category)}
                                     </p>
                                     <h3 className="mt-1 line-clamp-2 text-title-4 font-medium">{blog.title}</h3>
                                     <p className="mt-5 text-body-3 text-label-500">
