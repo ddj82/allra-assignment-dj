@@ -6,13 +6,21 @@ import { useState } from "react";
 import { blog } from "@/types/Items";
 import dayjs from 'dayjs';
 
-export default function Blogs() {
+interface BlogsProps {
+    searchQuery: string;
+}
+
+export default function Blogs({ searchQuery }: BlogsProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const pageGroupSize = 5; // 페이지 그룹
 
     const { data, isLoading, isError } = useQuery({
-        queryKey: ['blogs', currentPage],
-        queryFn: () => getPosts({ page: currentPage, pageSize: 12 }),
+        queryKey: ['blogs', currentPage, searchQuery],
+        queryFn: () => getPosts({
+            page: currentPage,
+            pageSize: 12,
+            term: searchQuery || undefined
+        }),
     });
 
     if (isLoading) return <div>로딩…</div>;
