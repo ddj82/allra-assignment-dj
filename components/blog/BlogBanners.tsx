@@ -4,7 +4,7 @@ import {useQuery} from "@tanstack/react-query";
 import {getBanners} from "@/lib/api";
 import {banner} from "@/types/Items";
 
-export default function Banners() {
+export default function BlogBanners() {
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['banners'],

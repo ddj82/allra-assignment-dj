@@ -18,3 +18,12 @@ export async function getPosts(params?: { page?: number; pageSize?: number; cate
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json(); // 그대로 반환
 }
+
+export async function getPostById(id: number) {
+    const base = `https://allra-front-assignment.vercel.app/api/blogs/${id}`;
+    const url = new URL(base);
+
+    const res = await fetch(url.toString(), { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+}
