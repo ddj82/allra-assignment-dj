@@ -1,4 +1,4 @@
-export async function getPosts(params?: { q?: string; page?: number; pageSize?: number; category?: string; term?: string; }) {
+export async function getPosts(params?: { page?: number; pageSize?: number; category?: string; term?: string; }) {
     const base = 'https://allra-front-assignment.vercel.app/api/blogs';
     const url = new URL(base);
 
