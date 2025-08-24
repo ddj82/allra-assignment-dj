@@ -2,6 +2,7 @@
 
 import {useQuery} from "@tanstack/react-query";
 import {getBanners} from "@/lib/api";
+import {banner} from "@/types/Items";
 
 export default function Banners() {
 
@@ -16,7 +17,7 @@ export default function Banners() {
     return (
         <div>
             <div className="flex">
-                {data?.map(b => (
+            {data?.map((b: banner) => (
                     <div key={b.id}>
                         <img alt={b.title} src={b.thumbnail}/>
                     </div>
