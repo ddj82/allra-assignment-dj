@@ -21,8 +21,14 @@ export default function Banners() {
                     <div key={b.id} className="overflow-hidden">
                         <div className="flex -ml-6"> {/* style={{transform: "translate3d(-616px, 0px, 0px)"}} */}
                             <div className="min-w-0 shrink-0 grow-0 basis-full pl-6">
-                                <div className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl border border-line-200">
-                                    <img alt={b.title} src={b.thumbnail} className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"/>
+                                <div
+                                    className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl border border-line-200"
+                                >
+                                    <img
+                                        alt={b.title}
+                                        src={b.thumbnail}
+                                        className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -32,9 +38,15 @@ export default function Banners() {
 
             <div className="hidden gap-6 md:flex">
                 {data?.map((b: banner) => (
-                    <div key={b.id}
-                         className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl border border-line-200">
-                    <img alt={b.title} src={b.thumbnail} className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"/>
+                    <div
+                        key={b.id}
+                        className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl border border-line-200"
+                    >
+                        <img
+                            alt={b.title}
+                            src={b.thumbnail}
+                            className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                        />
                     </div>
                 ))}
             </div>
