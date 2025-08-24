@@ -5,12 +5,13 @@ import { getPosts } from '@/lib/api';
 import { useState } from "react";
 import { blog } from "@/types/Items";
 import dayjs from 'dayjs';
+import Link from "next/link";
 
 interface BlogsProps {
     searchQuery: string;
 }
 
-export default function Blogs({ searchQuery }: BlogsProps) {
+export default function BlogList({ searchQuery }: BlogsProps) {
     const [currentPage, setCurrentPage] = useState(1);
     const pageGroupSize = 5; // 페이지 그룹
 
@@ -78,22 +79,24 @@ export default function Blogs({ searchQuery }: BlogsProps) {
             {/* 블로그 목록 */}
             <div className="grid grid-cols-1 gap-x-8 gap-y-9 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {data.list?.map((blog: blog) => (
-                    <div key={blog.id} className="flex flex-col gap-6">
-                        <div className="relative aspect-[2/1] overflow-hidden rounded-2xl">
-                            <img alt={blog.title} src={blog.thumbnail} className="object-cover"/>
-                        </div>
-                        <div>
+                    <Link key={blog.id} href={`/blogs/${blog.id}`}>
+                        <div className="flex flex-col gap-6">
+                            <div className="relative aspect-[2/1] overflow-hidden rounded-2xl">
+                                <img alt={blog.title} src={blog.thumbnail} className="object-cover"/>
+                            </div>
                             <div>
-                                <p className="text-body-3 font-medium text-secondary-400">
-                                    {blog.category}
-                                </p>
-                                <h3 className="mt-1 line-clamp-2 text-title-4 font-medium">{blog.title}</h3>
-                                <p className="mt-5 text-body-3 text-label-500">
-                                    {dayjs(blog.createdAt).format("YYYY-MM-DD")}
-                                </p>
+                                <div>
+                                    <p className="text-body-3 font-medium text-secondary-400">
+                                        {blog.category}
+                                    </p>
+                                    <h3 className="mt-1 line-clamp-2 text-title-4 font-medium">{blog.title}</h3>
+                                    <p className="mt-5 text-body-3 text-label-500">
+                                        {dayjs(blog.createdAt).format("YYYY-MM-DD")}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))}
             </div>
 

@@ -1,5 +1,5 @@
-import {useRef} from "react";
-import {Search} from "lucide-react";
+import {useRef, useState} from "react";
+import {Search, X} from "lucide-react";
 
 interface BlogHeaderProps {
     onSearch: (query: string) => void;
@@ -7,10 +7,24 @@ interface BlogHeaderProps {
 
 export default function BlogHeader({ onSearch }: BlogHeaderProps) {
     const inputRef = useRef<HTMLInputElement>(null);
+    const [hasValue, setHasValue] = useState(false);
 
     const handleSearch = () => {
         const query = inputRef.current?.value || '';
         onSearch(query);
+    };
+
+    const handleClear = () => {
+        if (inputRef.current) {
+            inputRef.current.value = '';
+            setHasValue(false);
+            inputRef.current.focus();
+        }
+    };
+
+    const handleInputChange = () => {
+        const value = inputRef.current?.value || '';
+        setHasValue(value.length > 0);
     };
 
     const handleKeyPress = (e: React.KeyboardEvent) => {
@@ -25,20 +39,28 @@ export default function BlogHeader({ onSearch }: BlogHeaderProps) {
                 블로그
             </h2>
             <div className="relative">
-                {/* 검색 버튼 */}
-                <Search size={16} className="lucide lucide-search absolute top-1/2 left-7 -translate-y-1/2 text-label-700 cursor-pointer"/>
-                {/*<button*/}
-                {/*    onClick={handleSearch}*/}
-                {/*    className="lucide lucide-search absolute top-1/2 left-7 -translate-y-1/2 text-label-700 cursor-pointer"*/}
-                {/*>*/}
-                {/*</button>*/}
+                <Search
+                    size={16}
+                    className={`absolute top-1/2 left-5 -translate-y-1/2 text-label-700 ${
+                        hasValue ? 'cursor-pointer' : 'pointer-events-none'
+                    }`}
+                    onClick={hasValue ? handleSearch : undefined}
+                />
                 <input
                     ref={inputRef}
                     className="ring-offset-background file:text-sm flex rounded-md border bg-background-default px-6 py-[12.5px] file:border-0 file:bg-transparent file:font-medium placeholder:text-body-2 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:border-0 disabled:bg-background-alternative disabled:text-status-disable disabled:placeholder:text-status-disable focus:ring-1 focus:ring-component-dark h-[48px] border-line-200 pl-11 text-body-1 placeholder:font-normal placeholder:text-label-500 w-full md:w-[400px] lg:w-[468px]"
                     autoComplete="off"
                     placeholder="검색어를 입력해주세요"
                     onKeyPress={handleKeyPress}
+                    onChange={handleInputChange}
                 />
+                {hasValue && (
+                    <X
+                        size={16}
+                        className="absolute top-1/2 right-5 -translate-y-1/2 text-label-700 cursor-pointer hover:text-label-800"
+                        onClick={handleClear}
+                    />
+                )}
             </div>
         </header>
     );

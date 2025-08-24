@@ -1,6 +1,6 @@
 'use client';
 
-export default function Banners() {
+export default function BlogBanners() {
     return (
         <div>
             

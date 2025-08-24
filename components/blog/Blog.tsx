@@ -1,7 +1,7 @@
 'use client';
 
-import Blogs from "@/app/items/Blogs";
-import Banners from "@/app/items/Banners";
+import BlogList from "@/components/blog/BlogList";
+import BlogBanners from "@/components/blog/BlogBanners";
 import BlogHeader from "@/components/common/BlogHeader";
 import {useState} from "react";
 
@@ -11,8 +11,8 @@ export default function Blog() {
     return (
         <div>
             <BlogHeader onSearch={setSearchQuery}/>
-            <Banners/>
-            <Blogs searchQuery={searchQuery}/>
+            <BlogBanners/>
+            <BlogList searchQuery={searchQuery}/>
         </div>
     );
 };
