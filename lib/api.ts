@@ -27,3 +27,29 @@ export async function getPostById(id: number) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
 }
+
+export async function verifyBusinessNumber(businessNumber: string) {
+    const res = await fetch('https://allra-front-assignment.vercel.app/api/auth/verify-business-number', {
+        method: 'POST',
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            businessNumber: businessNumber
+        }),
+        cache: 'no-store'
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        // 409는 이미 등록된 사업자번호
+        if (res.status === 409) {
+            throw new Error(data.errorMessage);
+        }
+        throw new Error(data.errorMessage);
+    }
+
+    return data;
+}

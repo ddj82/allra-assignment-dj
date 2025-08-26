@@ -1,10 +1,10 @@
 'use client';
 
-import BlogList from "@/components/blog/BlogList";
-import BlogBanners from "@/components/blog/BlogBanners";
+import BlogList from "@/components/blogs/BlogList";
+import BlogBanners from "@/components/blogs/BlogBanners";
 import BlogHeader, {BlogHeaderRef} from "@/components/common/BlogHeader";
 import {useEffect, useRef, useState} from "react";
-import BlogCategory from "@/components/blog/BlogCategory";
+import BlogCategory from "@/components/blogs/BlogCategory";
 import {useRouter, useSearchParams} from "next/navigation";
 
 export default function Blog() {
