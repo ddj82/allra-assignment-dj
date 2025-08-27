@@ -1,7 +1,15 @@
+import {userData} from "@/types/Items";
+
 export async function getBanners() {
     const res = await fetch('https://allra-front-assignment.vercel.app/api/blogs/banners', { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
+
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.errorMessage);
+    }
+
+    return data;
 }
 
 export async function getPosts(params?: { page?: number; pageSize?: number; category?: string; term?: string; }) {
@@ -15,17 +23,25 @@ export async function getPosts(params?: { page?: number; pageSize?: number; cate
     }
 
     const res = await fetch(url.toString(), { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json(); // 그대로 반환
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.errorMessage);
+    }
+
+    return data;
 }
 
 export async function getPostById(id: number) {
-    const base = `https://allra-front-assignment.vercel.app/api/blogs/${id}`;
-    const url = new URL(base);
+    const res = await fetch(`https://allra-front-assignment.vercel.app/api/blogs/${id}`, { cache: 'no-store' });
 
-    const res = await fetch(url.toString(), { cache: 'no-store' });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return res.json();
+    const data = await res.json();
+
+    if (!res.ok) {
+        throw new Error(data.errorMessage);
+    }
+
+    return data;
 }
 
 export async function verifyBusinessNumber(businessNumber: string) {
@@ -48,6 +64,28 @@ export async function verifyBusinessNumber(businessNumber: string) {
         if (res.status === 409) {
             throw new Error(data.errorMessage);
         }
+        throw new Error(data.errorMessage);
+    }
+
+    return data;
+}
+
+export async function insertUser(userFormData: userData) {
+    const res = await fetch('https://allra-front-assignment.vercel.app/api/auth/register', {
+        method: 'POST',
+        headers: {
+            'accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            ...userFormData,
+        }),
+        cache: 'no-store'
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
         throw new Error(data.errorMessage);
     }
 
