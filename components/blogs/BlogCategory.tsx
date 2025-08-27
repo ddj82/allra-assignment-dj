@@ -1,3 +1,4 @@
+'use client';
 import {BLOG_CATEGORIES} from "@/types/Items";
 
 interface BlogCategoryProps {

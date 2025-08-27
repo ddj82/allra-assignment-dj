@@ -1,3 +1,4 @@
+'use client';
 import {forwardRef, useImperativeHandle, useRef, useState} from "react";
 import {Search, X} from "lucide-react";
 

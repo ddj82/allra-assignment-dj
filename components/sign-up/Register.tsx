@@ -7,21 +7,14 @@ import {insertUser, verifyBusinessNumber} from "@/lib/api";
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import {useRouter} from "next/navigation";
+import {ValidationConfig} from "@/types/Items";
 
 dayjs.extend(customParseFormat);
-
-interface ValidationConfig {
-    [key: string]: {
-        pattern?: RegExp;
-        customValidation?: (value: string) => boolean;
-        errorMessage: string;
-        successMessage?: string;
-    };
-}
 
 
 export default function Register() {
     const router = useRouter();
+
     const [formData, setFormData] = useState({
         businessNumber: "",
         password: "",
@@ -516,9 +509,6 @@ export default function Register() {
                                         </div>
                                         <div className="flex items-stretch gap-4">
                                             <div className="relative w-full">
-                                                {isVerifyBusinessNumber &&
-                                                    <Check size={13} className="text-status-correct absolute top-1/2 right-4 -translate-y-1/2"/>
-                                                }
                                                 <input
                                                     id="businessNumber"
                                                     name="businessNumber"
@@ -531,6 +521,9 @@ export default function Register() {
                                                     ${isVerifyBusinessNumber && "bg-background-alternative"}`}
                                                     readOnly={isVerifyBusinessNumber}
                                                 />
+                                                {isVerifyBusinessNumber &&
+                                                    <Check size={13} className="text-status-correct absolute top-1/2 right-4 -translate-y-1/2"/>
+                                                }
                                             </div>
                                             <button
                                                 type="button"

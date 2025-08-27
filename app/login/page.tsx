@@ -1,10 +1,10 @@
-import Register from "@/components/sign-up/Register";
+import Login from "@/components/login/Login";
 
 export default function RegisterPage() {
 
     return (
         <div>
-            <Register/>
+            <Login/>
         </div>
     );
 };

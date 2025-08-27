@@ -26,7 +26,6 @@ export default async function BlogDetail({ params }: PageProps) {
                         {dayjs(blog.createdAt).format('YYYY-MM-DD')}
                     </p>
                 </header>
-                {/*<pre>{JSON.stringify(blog, null, 2)}</pre>*/}
                 <div
                     dangerouslySetInnerHTML={{__html: blog.content}}
                     className="mx-auto prose min-w-full prose-p:my-0 prose-img:my-0"
