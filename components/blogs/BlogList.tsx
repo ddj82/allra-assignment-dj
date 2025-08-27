@@ -142,9 +142,9 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
 
             {/* 페이지네이션 */}
             {totalPages > 1 && (
-                <div className="flex w-full flex-wrap items-center justify-center gap-6 text-body-2 mt-9 md:mt-10 lg:mt-11">
+                <div className="flex w-full flex-wrap items-center justify-center gap-4 text-body-2 mt-9 md:mt-10 lg:mt-11">
                     {/* 왼쪽 버튼 */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                         <button
                             onClick={goToFirstGroup}
                             className="paginationBtn"
@@ -164,19 +164,27 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
 
                     {/* 페이지 번호 */}
                     <div className="flex items-center gap-1">
-                        {getVisiblePages().map(pageNum => (
-                            <button
-                                key={pageNum}
-                                onClick={() => setCurrentPage(pageNum)}
-                                className="inline-flex items-center justify-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed disabled:text-status-disable h-[40px] gap-3 px-6 text-body-2 !size-9 rounded-full hover:bg-component-alternative md:size-10 bg-component-alternative font-bold text-label-900"
-                            >
-                                <span className="translate-y-px text-body-3 md:text-body-2">{pageNum}</span>
-                            </button>
-                        ))}
+                        {getVisiblePages().map(pageNum => {
+                            const isActive = pageNum === currentPage;
+                            return (
+                                <button
+                                    key={pageNum}
+                                    onClick={() => setCurrentPage(pageNum)}
+                                    aria-current={isActive ? "page" : undefined}
+                                    className={[
+                                        "flex items-center justify-center whitespace-nowrap cursor-pointer h-[40px] gap-3 px-3 !size-9 rounded-full md:size-10 font-bold",
+                                        isActive
+                                            ? "text-label-900 bg-component-alternative"
+                                            : "text-label-500 hover:bg-component-alternative"
+                                    ].join(" ")}
+                                >
+                                    <span className="text-body-3 md:text-body-2">{pageNum}</span>
+                                </button>
+                            );
+                        })}
                     </div>
-
                     {/* 오른쪽 버튼 */}
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2">
                         <button
                             onClick={goToNextPage}
                             className="paginationBtn"
