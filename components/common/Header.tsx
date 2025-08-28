@@ -49,7 +49,7 @@ export default function Header() {
                         {/* 로고 */}
                         <div className="flex items-center gap-11">
                             <Link href="/" className="flex items-center justify-center w-24 h-16">
-                                로고
+                                <img loading="lazy"  src="/images/Logo/Frame 974.png" alt="allra logo"/>
                             </Link>
                         </div>
                         {isLogin ? (
