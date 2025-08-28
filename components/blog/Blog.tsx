@@ -8,6 +8,7 @@ import BlogCategory from "@/components/blog/BlogCategory";
 import {useRouter, useSearchParams} from "next/navigation";
 
 export default function Blog() {
+
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
