@@ -7,7 +7,7 @@ import Link from "next/link";
 import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
-export default function Banners() {
+export default function BlogBanners() {
 
     const { data, isLoading, isError } = useQuery({
         queryKey: ['banners'],
