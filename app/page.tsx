@@ -1,9 +1,9 @@
-import Blog from "@/components/Blog";
+import Blog from "@/components/blogs/Blog";
 
 export default async function Home() {
 
     return (
-        <div>
+        <div className="max-md:container">
             <Blog/>
         </div>
     );

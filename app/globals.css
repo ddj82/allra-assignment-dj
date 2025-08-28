@@ -1,1 +1,34 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --breakpoint-sm: 40rem;
+        --breakpoint-md: 48rem;
+        --breakpoint-lg: 64rem;
+        --breakpoint-xl: 80rem;
+        --breakpoint-2xl: 96rem;
+    }
+}
+
+img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    color: transparent;
+}
+
+.paginationBtn {
+    @apply inline-flex items-center justify-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed disabled:text-status-disable h-[40px] gap-3 rounded-md text-body-2 font-semibold px-0;
+}
+
+* {
+    @apply border-line-400;
+    word-break: keep-all;
+}
+
+.searchTagBtn {
+    @apply inline-flex items-center justify-center whitespace-nowrap cursor-pointer disabled:cursor-not-allowed disabled:text-status-disable h-[32px] gap-1 rounded-sm px-1 text-body-2 font-semibold text-primary;
+}
