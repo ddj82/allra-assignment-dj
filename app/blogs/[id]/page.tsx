@@ -1,5 +1,5 @@
 import {getPostById} from "@/lib/api";
-import BlogDetail from "@/components/blog/BlogDetail";
+import BlogDetail from "@/components/blogs/BlogDetail";
 import {BlogDetailData} from "@/types/Items";
 
 interface PageProps {
