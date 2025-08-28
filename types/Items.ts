@@ -37,6 +37,23 @@ export interface BlogDetailProps {
     blog: BlogDetailData;
 }
 
+export interface ValidationConfig {
+    [key: string]: {
+        pattern?: RegExp;
+        customValidation?: (value: string) => boolean;
+        errorMessage: string;
+        successMessage?: string;
+    };
+}
+
+export interface FieldState {
+    isValid: boolean;
+    errorMessage: string;
+    successMessage?: string;
+}
+
+export type FieldStates = Record<string, FieldState>;
+
 export interface userData {
     businessNumber: string;
     userName: string;
