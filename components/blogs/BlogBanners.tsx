@@ -39,11 +39,13 @@ export default function BlogBanners() {
                         key={b.id}
                         className="relative aspect-[2/1] w-full overflow-hidden rounded-2xl border border-line-200"
                     >
-                        <img
-                            alt={b.title}
-                            src={b.thumbnail}
-                            className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"
-                        />
+                        <Link href={`/blogs/${b.id}`}>
+                            <img
+                                alt={b.title}
+                                src={b.thumbnail}
+                                className="object-cover transition-transform duration-300 ease-in-out hover:scale-105"
+                            />
+                        </Link>
                     </div>
                 ))}
             </div>
@@ -52,9 +54,9 @@ export default function BlogBanners() {
             <div className="relative md:hidden">
                 <div className="overflow-hidden">
                     <div className="flex -ml-6">
-                        {data?.map((b: banner, index: number) => (
+                        {data?.map((b: banner) => (
                             <motion.div
-                                key={index}
+                                key={b.id}
                                 className="min-w-0 shrink-0 grow-0 basis-full pl-6"
                                 animate={{
                                     transform: `translate3d(-${currentIndex * 100}%, 0px, 0px)`

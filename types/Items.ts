@@ -37,6 +37,19 @@ export interface BlogDetailProps {
     blog: BlogDetailData;
 }
 
+export interface userData {
+    businessNumber: string;
+    userName: string;
+    password: string;
+    companyName: string;
+    phone: string;
+    email: string;
+    partnerId: string;
+    birthDate: string;
+    isMarketingConsent: boolean;
+    businessNumberVerifyToken: string;
+}
+
 export const BLOG_CATEGORIES = [
     { value: '', label: '전체' },
     { value: 'TREND', label: '트렌드' },
@@ -52,8 +65,3 @@ export const getCategoryLabel = (value: string): string => {
     return category?.label || value;
 };
 
-// 한글을 영어 값으로 변환하는 함수 (필요시)
-export const getCategoryValue = (label: string): string => {
-    const category = BLOG_CATEGORIES.find(cat => cat.label === label);
-    return category?.value || '';
-};
