@@ -15,6 +15,28 @@ export interface blog {
     updatedAt: Date;
 }
 
+export interface BlogsProps {
+    searchQuery: string;
+    selectedCategory: string;
+    currentPage: number;
+    onPageChange: (page: number) => void;
+}
+
+export interface BlogDetailData {
+    category: string;
+    content: string;
+    createdAt: string;
+    id: number;
+    summary: string;
+    thumbnail: string;
+    title: string;
+    updatedAt: string;
+}
+
+export interface BlogDetailProps {
+    blog: BlogDetailData;
+}
+
 export interface ValidationConfig {
     [key: string]: {
         pattern?: RegExp;
