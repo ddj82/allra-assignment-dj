@@ -1,1 +1,11 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    color: transparent;
+}
