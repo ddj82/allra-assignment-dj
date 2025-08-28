@@ -112,7 +112,7 @@ export default function BlogList({ searchQuery, selectedCategory, currentPage, o
                     <Link key={blog.id} href={`/blogs/${blog.id}`}>
                         <div className="flex flex-col gap-6">
                             <div className="relative aspect-[2/1] overflow-hidden rounded-2xl">
-                                <img alt={blog.title} src={blog.thumbnail} className="object-cover"/>
+                                <img loading="lazy"  alt={blog.title} src={blog.thumbnail} className="object-cover"/>
                             </div>
                             <div>
                                 <div>
