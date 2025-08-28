@@ -3,7 +3,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { getPosts } from '@/lib/api';
 import {useEffect, useState} from "react";
-import {blog, getCategoryLabel} from "@/types/Items";
+import {blog, BlogsProps, getCategoryLabel} from "@/types/Items";
 import dayjs from 'dayjs';
 import Link from "next/link";
 import {
@@ -13,13 +13,8 @@ import {
     ChevronsLeft,
 } from "lucide-react";
 
-interface BlogsProps {
-    searchQuery: string;
-    selectedCategory: string;
-}
 
-export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) {
-    const [currentPage, setCurrentPage] = useState(1);
+export default function BlogList({ searchQuery, selectedCategory, currentPage, onPageChange }: BlogsProps) {
     const pageGroupSize = 5; // 페이지 그룹
 
     const { data, isLoading, isError } = useQuery({
@@ -31,11 +26,6 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
             category: selectedCategory || undefined,
         }),
     });
-
-    // 검색어나 카테고리 변경 시 첫 페이지로 리셋
-    useEffect(() => {
-        setCurrentPage(1);
-    }, [searchQuery, selectedCategory]);
 
     if (isLoading) return <div>로딩…</div>;
     if (isError) return <div>에러</div>;
@@ -64,26 +54,26 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
     const goToFirstGroup = () => {
         const newGroupStart = getCurrentGroupStart(currentPage) - pageGroupSize;
         if (newGroupStart >= 1) {
-            setCurrentPage(newGroupStart);
+            onPageChange(newGroupStart);
         }
     };
 
     const goToPrevPage = () => {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1);
+            onPageChange(currentPage - 1);
         }
     };
 
     const goToNextPage = () => {
         if (currentPage < totalPages) {
-            setCurrentPage(currentPage + 1);
+            onPageChange(currentPage + 1);
         }
     };
 
     const goToNextGroup = () => {
         const newGroupStart = getCurrentGroupStart(currentPage) + pageGroupSize;
         if (newGroupStart <= totalPages) {
-            setCurrentPage(newGroupStart);
+            onPageChange(newGroupStart);
         }
     };
 
@@ -92,7 +82,7 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
             {/* 블로그 목록 */}
             {searchQuery && (
                 <p className="mb-8 text-body-3 font-medium text-label-500">
-                    '{searchQuery}'에 대한 {data.totalCount}개의 검색결과
+                    &#39;{searchQuery}&#39;에 대한 {data.totalCount}개의 검색결과
                 </p>
             )}
 
@@ -169,7 +159,7 @@ export default function BlogList({ searchQuery, selectedCategory }: BlogsProps) 
                             return (
                                 <button
                                     key={pageNum}
-                                    onClick={() => setCurrentPage(pageNum)}
+                                    onClick={() => onPageChange(pageNum)}
                                     aria-current={isActive ? "page" : undefined}
                                     className={[
                                         "flex items-center justify-center whitespace-nowrap cursor-pointer h-[40px] gap-3 px-3 !size-9 rounded-full md:size-10 font-bold",
