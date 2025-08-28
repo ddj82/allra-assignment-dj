@@ -1,6 +1,6 @@
 import {getPostById} from "@/lib/api";
-import BlogDetail from "@/components/blog/BlogDetail";
 import {BlogDetailData} from "@/types/Items";
+import BlogDetail from "@/components/blogs/BlogDetail";
 
 interface PageProps {
     params: Promise<{ id: string }>,
