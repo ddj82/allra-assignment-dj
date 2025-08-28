@@ -19,7 +19,6 @@ interface ValidationConfig {
     };
 }
 
-
 export default function Register() {
     const router = useRouter();
     const [formData, setFormData] = useState({
