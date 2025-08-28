@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 import {motion} from "framer-motion";
 
 export default function Banners() {
+
     const { data, isLoading, isError } = useQuery({
         queryKey: ['banners'],
         queryFn: getBanners,
